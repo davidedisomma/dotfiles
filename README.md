@@ -22,7 +22,7 @@ dotfiles checkout --track origin/master
 
 ### oh-my-zsh
 ```
-wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 ```
 
@@ -30,17 +30,15 @@ wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/i
 ```
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew doctor
-brew install wget tig tree hub htop
-# optionally
-brew install tmate git curl bash zsh fish
-```
-
-### n
-```
-curl -L https://git.io/n-install | bash -s -- -y latest stable lts
+cd .dotfiles_conf
+sh dotfiles_conf/brew_app_install.sh
+# To install powerlevel9k themes
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 ```
 
 #### iterm2
+Go to (iterm2 -> preferences -> Profiles -> Text ) and click on 'Use built-in' Powerline glyphs.
+
 navigate to the preferences window (iterm2 -> preferences), click on the general tab and towards the bottom of the window you should see an option that says `load preferences from a custom folder or url`. check this option and set the url according to `$HOME/.iterm2`.
 
 ```sh
