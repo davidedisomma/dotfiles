@@ -57,3 +57,7 @@ ln -s ~/.st3/Packages/User $ST3/Packages/User
 rm -rf $ST3/Installed\ Packages
 ln -s ~/.st3/Installed\ Packages $ST3/Installed\ Packages
 ```
+or just execute 
+```
+.dotfiles_conf/sublime_conf.sh
+```
