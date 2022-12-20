@@ -5,3 +5,6 @@
 # Please adapt and uncomment the following lines:
 #	name = Davide Di Somma
 #	email = davide.disomma@gmail.com
+
+[merge]
+  tool = meld

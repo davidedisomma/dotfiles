@@ -75,6 +75,7 @@ git
 autojump
 jump
 zsh-autosuggestions
+fzf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -140,3 +141,9 @@ POWERLEVEL9K_VCS_CLOBBERED_BACKGROUND='blue'
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+. $HOME/docker.zsh
+export FZF_COMPLETION_TRIGGER=''
+bindkey '^T' fzf-completion
+bindkey '^I' $fzf_default_completion
+
+[ -s "/Users/davidedisomma/.scm_breeze/scm_breeze.sh" ] && source "/Users/davidedisomma/.scm_breeze/scm_breeze.sh"

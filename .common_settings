@@ -1,4 +1,4 @@
-export JAVA_HOME=`/usr/libexec/java_home -v 13`
+export JAVA_HOME=`/usr/libexec/java_home -v 17`
 
 export GRADLE_HOME=/usr/local/bin/gradle/
 
@@ -7,10 +7,13 @@ export PROJECT_HOME=/Users/davidedisomma/Dev/Projects/
 
 export PATH="$HOME/.symfony/bin:$PATH"
 export PATH="/usr/local/Cellar/php/7.4.2/bin:$PATH"
-export PATH="$HOME/.rbenv/shims:$HOME/.jenv/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 # source ~/Dev/config/git-completion.bash
+
+# jenv
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
 
 alias ll="ls -la"
 alias v="vagrant"
@@ -37,13 +40,25 @@ alias gitlog='\$SCRIPTS_HOME/support/gitlog.sh'
 alias gcr='\$SCRIPTS_HOME/support/check-repo-updates'
 
 # ALIAS JAVA SWITCH
-alias j13="export JAVA_HOME=`/usr/libexec/java_home -v 13`; java -version"
+alias j18="export JAVA_HOME=`/usr/local/Cellar/openjdk/18.0.2.1/`; java -version"
+alias j17="export JAVA_HOME=`/usr/libexec/java_home -v 17`; java -version"
+alias j14="export JAVA_HOME=`/usr/libexec/java_home -v 14`; java -version"
 alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
+alias javaversions='/usr/libexec/java_home -V'
 
-#export JAVA_HOME=`/usr/libexec/java_home -v 9`; java -version
 
 # PHP
-alias composer="php /usr/local/bin/composer.phar"
-# OTHER STUFF
-alias av=/Users/davidedisomma/Dev/Projects/XPeppers/Mercury/mercury-development/asvagrant
+# alias composer="php /usr/local/bin/composer.phar"
 
+## PRIMA
+alias ndock='ndocker-compose-run --rm --service-ports web bash'
+alias dockdown='docker-compose down'
+
+gcpp () {
+	branch=$(git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
+	branch=${branch/(refs\/heads|tags)\//}
+	tag=$(echo $branch | cut -f1 -d'/')
+	git commit -m "[$tag]: $@"
+}
+
+function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
